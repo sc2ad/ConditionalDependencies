@@ -10,6 +10,12 @@
       "headersOnly": true
     }
   },
-  "dependencies": [],
+  "dependencies": [
+    {
+      "id": "modloader",
+      "versionRange": "*",
+      "additionalData": {}
+    }
+  ],
   "additionalData": {}
 }
