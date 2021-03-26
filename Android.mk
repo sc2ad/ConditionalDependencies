@@ -27,7 +27,7 @@ include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := conditional-dependencies-test
-LOCAL_SRC_FILES += src/test.cpp
+LOCAL_SRC_FILES += src/test.cpp src/another_testing_translationUnit.cpp
 LOCAL_SHARED_LIBRARIES += modloader
 LOCAL_LDLIBS += -llog
 LOCAL_CFLAGS += -DVERSION='"0.1.0"' -DID='"conditional-dependencies"' -I'./shared' -I'./extern'
@@ -37,7 +37,7 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := conditional-dependencies-test2
-LOCAL_SRC_FILES += src/test2.cpp
+LOCAL_SRC_FILES += src/test2.cpp src/another_testing_translationUnit.cpp
 LOCAL_SHARED_LIBRARIES += modloader
 LOCAL_LDLIBS += -llog
 LOCAL_CFLAGS += -DVERSION='"0.1.0"' -DID='"conditional-dependencie2s"' -I'./shared' -I'./extern'
