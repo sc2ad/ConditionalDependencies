@@ -11,7 +11,7 @@
 
 namespace CondDeps {
 
-    bool fileexists(std::string_view filename) {
+    bool cond_fileexists(std::string_view filename) {
         return access(filename.data(), W_OK | R_OK) != -1;
     }
 
@@ -34,7 +34,7 @@ namespace CondDeps {
     #define MOD_TEMP_PATH_FMT "/data/data/%s/"
     #endif
 
-    std::string getPath() {
+    std::string cond_getPath() {
         static auto path = cond_string_format(MOD_TEMP_PATH_FMT, Modloader::getApplicationId().c_str());
         return path;
     }

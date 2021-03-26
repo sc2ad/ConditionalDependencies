@@ -16,8 +16,8 @@ namespace CondDep {
     template<class R, class... TArgs>
     std::optional<R (*)(TArgs...)> Find(std::string_view id, std::string_view name) {
         std::string partial("lib" + std::string(id) + ".so");
-        auto searchPath = CondDeps::getPath() + partial;
-        if (!CondDeps::fileexists(searchPath)) {
+        auto searchPath = CondDeps::cond_getPath() + partial;
+        if (!CondDeps::cond_fileexists(searchPath)) {
             return std::nullopt;
         }
         // Clear dlerror first
