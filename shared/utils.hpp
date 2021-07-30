@@ -30,7 +30,7 @@ namespace CondDeps {
         }
 
         static std::string cond_getPath() {
-            static auto path = cond_string_format(Modloader::getDestinationPath(), Modloader::getApplicationId().c_str());
+            static auto path = Modloader::getDestinationPath() + Modloader::getApplicationId();
             return path;
         }
     };
