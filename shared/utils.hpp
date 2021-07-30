@@ -10,10 +10,6 @@
 #include "modloader/shared/modloader.hpp"
 
 namespace CondDeps {
-    #ifndef MOD_TEMP_PATH_FMT
-    // Must always end with a /
-    #define MOD_TEMP_PATH_FMT "/data/data/%s/"
-    #endif
     struct __Internal {
         static bool cond_fileexists(std::string_view filename) {
             return access(filename.data(), W_OK | R_OK) != -1;
@@ -34,7 +30,7 @@ namespace CondDeps {
         }
 
         static std::string cond_getPath() {
-            static auto path = cond_string_format(MOD_TEMP_PATH_FMT, Modloader::getApplicationId().c_str());
+            static auto path = cond_string_format(Modloader::getDestinationPath(), Modloader::getApplicationId().c_str());
             return path;
         }
     };
