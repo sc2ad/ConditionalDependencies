@@ -18,7 +18,7 @@ TARGET_ARCH_ABI := $(APP_ABI)
 
 rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 
-# Creating prebuilt for dependency: modloader - version: 1.0.4
+# Creating prebuilt for dependency: modloader - version: 1.2.3
 include $(CLEAR_VARS)
 LOCAL_MODULE := modloader
 LOCAL_EXPORT_C_INCLUDES := extern/modloader
@@ -27,7 +27,8 @@ include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := conditional-dependencies-test
-LOCAL_SRC_FILES += src/test.cpp src/another_testing_translationUnit.cpp
+LOCAL_SRC_FILES += src/test.cpp
+LOCAL_SRC_FILES += src/another_testing_translationUnit.cpp
 LOCAL_SHARED_LIBRARIES += modloader
 LOCAL_LDLIBS += -llog
 LOCAL_CFLAGS += -DVERSION='"0.1.0"' -DID='"conditional-dependencies"' -I'./shared' -I'./extern'
@@ -36,11 +37,12 @@ LOCAL_C_INCLUDES += ./include ./src
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := conditional-dependencies-test2
-LOCAL_SRC_FILES += src/test2.cpp src/another_testing_translationUnit.cpp
+LOCAL_MODULE := conditional-dependencies_0_2_0
+LOCAL_SRC_FILES += src/test2.cpp
+LOCAL_SRC_FILES += src/another_testing_translationUnit.cpp
 LOCAL_SHARED_LIBRARIES += modloader
 LOCAL_LDLIBS += -llog
-LOCAL_CFLAGS += -DVERSION='"0.1.0"' -DID='"conditional-dependencie2s"' -I'./shared' -I'./extern'
+LOCAL_CFLAGS += -DVERSION='"0.2.0"' -DID='"conditional-dependencie2s"' -I'./shared' -I'./extern'
 LOCAL_CPPFLAGS += -std=c++2a -frtti
 LOCAL_C_INCLUDES += ./include ./src
 include $(BUILD_SHARED_LIBRARY)
