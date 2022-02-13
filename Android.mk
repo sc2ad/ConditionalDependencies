@@ -30,7 +30,7 @@ LOCAL_MODULE := conditional-dependencies-test
 LOCAL_SRC_FILES += src/test.cpp src/another_testing_translationUnit.cpp
 LOCAL_SHARED_LIBRARIES += modloader
 LOCAL_LDLIBS += -llog
-LOCAL_CFLAGS += -DVERSION='"0.1.0"' -DID='"conditional-dependencies"' -I'./shared' -I'./extern'
+LOCAL_CFLAGS += -DVERSION='"0.1.0"' -DMOD_ID='"conditional-dependencies"' -I'./shared' -I'./extern'
 LOCAL_CPPFLAGS += -std=c++2a -frtti
 LOCAL_C_INCLUDES += ./include ./src
 include $(BUILD_SHARED_LIBRARY)
