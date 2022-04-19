@@ -7,7 +7,10 @@
     "version": "0.1.0",
     "url": "https://github.com/sc2ad/ConditionalDependencies",
     "additionalData": {
-      "headersOnly": true
+      "headersOnly": true,
+      "compileOptions": {
+        "cppFeatures": ["rtti"]
+      }
     }
   },
   "dependencies": [
