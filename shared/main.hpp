@@ -40,9 +40,21 @@ namespace CondDeps {
     template<class Ret = void*>
     std::optional<Ret> GetSymbol(std::string_view id, std::string_view name) {
         std::string partial("lib" + std::string(id) + ".so");
-        auto searchPath = CondDeps::Internal::cond_getPath() + partial;
+        auto earlySearchPath = CondDeps::Internal::cond_getEarlyPath() + partial;
+        auto lateSearchPath = CondDeps::Internal::cond_getLatePath() + partial;
+        std::string searchPath = "";
         if (!CondDeps::Internal::cond_fileexists(searchPath)) {
-            return std::nullopt;
+            if (!CondDeps::Internal::cond_fileexists(searchPath)) {
+                return std::nullopt;
+            }
+            else
+            {
+                searchPath = lateSearchPath;
+            }
+        }
+        else
+        {
+            searchPath = earlySearchPath;
         }
         // Clear dlerror first
         dlerror();

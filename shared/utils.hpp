@@ -11,7 +11,7 @@
 #include <vector>
 #include <array>
 #include "logging.hpp"
-#include "modloader/shared/modloader.hpp"
+#include "scotland2/shared/modloader.h"
 
 namespace CondDeps {
     extern "C" {
@@ -169,8 +169,13 @@ namespace CondDeps {
         #pragma GCC diagnostic pop
         }
 
-        static std::string cond_getPath() {
-            static auto path = Modloader::getDestinationPath();
+        static std::string cond_getEarlyPath() {
+            static auto path = modloader::modloader_get_root_load_path() + "/early_mods";
+            return path;
+        }
+
+        static std::string cond_getLatePath() {
+            static auto path = modloader::modloader_get_root_load_path() + "/mods";
             return path;
         }
     };
